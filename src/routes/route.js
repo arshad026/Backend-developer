@@ -3,7 +3,7 @@ const abc = require('../introduction/intro')
 const first = require('../logger/logger')
 const second = require('../util/helper')
 const third = require('../validator/formatter')
-const lodash = require('lodash')
+const lodash = require('lodash');
 const router = express.Router();
 
 
@@ -17,41 +17,20 @@ router.get('/test-me', function (req, res) {
     third.trim()
     third.lower()
     third.upper()
-   // let arr =['january','february','march','april','may','june','july','august','september','october','november','december']
+    let arr =['january','february','march','april','may','june','july','august','september','october','november','december']
+    let result = lodash.chunk(arr,3)
+    console.log(result)
+    let arr1 = [1,3,5,7,9,11,13,15,17,19]
+    let result1 = lodash.tail(arr1)
+    console.log(result1)
+    let arr2 = [1,2,2,4,3,1]
+    let result2 = lodash.union(arr2)
+    console.log(result2)
+    let arr3 = [['horror','The Shining'],['drama','Titanic'],['thriller','Shutter Island'],['fantasy','Pans Labyrinth']]
+    let result3 = lodash.fromPairs(arr3)
+    console.log(result3)
     res.send('My second ever api!')
 });
-
-router.get('/cohort-member', function (req, res){
-    let students = ['Sabiha', 'Neha', 'Akash']
-    res.send(students)
-})
-
-router.get ('/student-name', function(req, res){
-    let name = ['Arsh','Azad','Saif']
-    res.send(name)
-})
-
-router.get ('/student-name/arsh', function(req, res){
-    let fullName = 'ARSHAD ASLAM'
-    res.send(fullName)
-})
-
-router.get('/students-details/Sabiha', function (req, res){
-    let details = "Sabiha Khan"
-    res.send (details)
-})
-
-router.get('/students-details/:name', function (req, res){
-    console.log("This is the request" + JSON.stringify(req.params))
-    let reqParams = req.params
-    let studentsName = reqParams.name
-    console.log('Name of the students is', studentsName)
-    //assuming details is firstName
-    let studentDetails = studentsName + " " + studentsName
-    
-    res.send (studentDetails)
-})
-
 
 router.get('/test-you', function(req, res){
     res.send('This is the second routes implementation')
