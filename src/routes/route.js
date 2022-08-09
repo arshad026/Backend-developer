@@ -1,3 +1,4 @@
+const { application } = require('express');
 const express = require('express');
 const abc = require('../introduction/intro')
 const router = express.Router();
@@ -10,9 +11,30 @@ router.get('/test-me', function (req, res) {
     res.send('My second ever api!')
 });
 
-router.get('/students', function (req, res){
+
+router.get('/sol1', function(req, res){
+    let arr = [1,2,3,5,6,7]
+    res.send(arr)
+})
+
+router.get('/cohort-member', function (req, res){
     let students = ['Sabiha', 'Neha', 'Akash']
     res.send(students)
+})
+
+router.get('/students-details/Sabiha', function (req, res){
+    let details = "Sabiha Khan"
+    res.send (details)
+})
+
+router.get('/students-details/:name', function (req, res){
+    console.log("This is the request" + JSON.stringify(req.params))
+    let reqParams = req.params
+    let studentsName = reqParams.name
+    console.log('Name of the students is', studentsName)
+    let studentDetails = studentsName + " " + studentsName
+    
+    res.send (studentDetails)
 })
 
 router.get('/student-details/:name', function(req, res){
