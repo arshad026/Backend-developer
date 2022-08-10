@@ -12,10 +12,7 @@ router.get('/test-me', function (req, res) {
 });
 
 
-router.get('/sol1', function(req, res){
-    let arr = [1,2,3,5,6,7]
-    res.send(arr)
-})
+
 
 router.get('/cohort-member', function (req, res){
     let students = ['Sabiha', 'Neha', 'Akash']
