@@ -52,10 +52,10 @@ router.post('/players-name', function (req, res) {
             break;
         }
     }
-    if(isNameRepeated){
-        res.send ('This player was already added!')
+    if (isNameRepeated) {
+        res.send('This player was already added!')
     }
-    else{
+    else {
         players.push(player)
         res.send(players)
 
