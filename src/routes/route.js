@@ -1,13 +1,8 @@
 const { query } = require('express');
 const express = require('express');
-const abc = require('../introduction/intro')
 const router = express.Router();
-
-router.get('/test-me', function (req, res) {
-    console.log('My batch is', abc.name)
-    abc.printName()
-    res.send('My second ever api!')
-});
+const UserModel = require("../models/useModel.js")
+const userController = require("../controllers/userController")
 
 
 let players = [
@@ -60,8 +55,55 @@ router.post('/players-name', function (req, res) {
         res.send(players)
 
     }
+});
+
+
+let persons = [
+    {
+        name: "PK",
+        age: 10,
+        votingstatus: false
+    },
+    {
+        name: "Sk",
+        age: 20,
+        votingstatus: false
+    },
+    {
+        name: "AA",
+        age: 70,
+        votingstatus: false
+    },
+    {
+        name: "SC",
+        age: 5,
+        votingstatus: false
+    },
+    {
+        name: "HQ",
+        age: 40,
+        votingstatus: false
+    }
+]
+
+router.post('/person', function (req, res) {
+    let votingAge = req.query.votingAge
+    let result = []
+
+    for (i = 0; i < persons.length; i++) {
+        if (persons[i].age > votingAge) {
+            persons[i].votingstatus = true
+            result.push(persons[i])
+        }
+    }
+    res.send({ data : result, status : true })
 })
 
+
+
+router.post('/userCreate', userController.userCreater)
+
+router.get('/getUsersData', userController.getUserData)
 
 module.exports = router;
 // adding this comment for no reason
