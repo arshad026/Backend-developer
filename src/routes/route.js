@@ -1,8 +1,6 @@
 const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const UserModel = require("../models/useModel.js")
-const userController = require("../controllers/userController")
 
 
 let players = [
@@ -99,11 +97,6 @@ router.post('/person', function (req, res) {
     res.send({ data : result, status : true })
 })
 
-
-
-router.post('/userCreate', userController.userCreater)
-
-router.get('/getUsersData', userController.getUserData)
 
 module.exports = router;
 // adding this comment for no reason
