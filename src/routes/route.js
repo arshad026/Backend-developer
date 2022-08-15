@@ -1,13 +1,13 @@
 const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const UserModel = require("../models/userModel")
-const UserController = require("../controllers/userController")
+const bookController = require("../controllers/bookController")
 
 
-router.post('/createBook', UserController.createBook)
+router.post('/createBook', bookController.createBook)
 
-router.get('/getBookData', UserController.getBookData)
+router.get('/getBookData', bookController.getBookData)
+
 
 module.exports = router;
 // adding this comment for no reason
