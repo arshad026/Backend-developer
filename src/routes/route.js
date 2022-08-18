@@ -1,7 +1,7 @@
 const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const bookController = require("../controllers/bookController")
+const authorController = require("../controllers/authorController")
 
 
 router.get('/test-me', function(req, res){
@@ -9,17 +9,14 @@ router.get('/test-me', function(req, res){
 })
 
 
-router.post('/createBook', bookController.createBook)
+router.post('/createBook', authorController.createBook)
 
-router.get('/bookList', bookController.bookList)
+router.post('/authors', authorController.authors)
 
-router.get('/getBooksInYear', bookController.getBooksInYear)
+router.get('/listBook', authorController.listBook)
 
-router.get('/getParticularBooks', bookController.getParticularBooks)
+router.get('/updateBook', authorController.updateBook)
 
-router.get('/getXINRBooks', bookController.getXINRBooks)
-
-router.get('/getRandomBooks', bookController.getRandomBooks)
-
+router.get('/bookRange', authorController.bookRange)
 
 module.exports = router;
