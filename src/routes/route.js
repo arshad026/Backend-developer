@@ -2,6 +2,8 @@ const { query } = require('express');
 const express = require('express');
 const router = express.Router();
 const authorController = require("../controllers/authorController")
+const publisherController = require("../controllers/publisherController")
+const bookController = require("../controllers/bookController")
 
 
 router.get('/test-me', function(req, res){
@@ -9,14 +11,17 @@ router.get('/test-me', function(req, res){
 })
 
 
-router.post('/createBook', authorController.createBook)
+router.post('/createAuthor', authorController.createAuthor)
 
-router.post('/authors', authorController.authors)
+router.post('/createPublisher', publisherController.createPublisher)
 
-router.get('/listBook', authorController.listBook)
+router.post('/createBook', bookController.createBook)
 
-router.get('/updateBook', authorController.updateBook)
+router.get('/getAllBook', bookController.getAllBook)
 
-router.get('/bookRange', authorController.bookRange)
+router.put('/updateBook', bookController.updateBook)
+
+router.put('/updatePrice', bookController.updatePrice)
+
 
 module.exports = router;
