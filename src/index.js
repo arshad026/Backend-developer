@@ -19,7 +19,7 @@ app.use(
         const date = new Date()
         const ip = req.ip
         const rout = req.originalUrl
-        console.log(date,",",",",ip,rout)
+        //console.log(date,",",",",ip,rout)
         next()
     }
 )

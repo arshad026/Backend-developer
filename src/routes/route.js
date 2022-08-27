@@ -1,9 +1,10 @@
 const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const authorController = require("../controllers/authorController")
-const publisherController = require("../controllers/publisherController")
-const bookController = require("../controllers/bookController")
+const orderController = require("../controllers/orderController")
+const productController = require("../controllers/productController")
+const userController = require("../controllers/userController")
+const middleWare = require('../middlewares/userMiddleware')
 
 
 router.get('/test-me', function(req, res){
@@ -11,17 +12,11 @@ router.get('/test-me', function(req, res){
 })
 
 
-router.post('/createAuthor', authorController.createAuthor)
+router.post('/createProduct', productController.createProduct)
 
-router.post('/createPublisher', publisherController.createPublisher)
+router.post('/createUser', middleWare.checkUser, userController.createUser)
 
-router.post('/createBook', bookController.createBook)
-
-router.get('/getAllBook', bookController.getAllBook)
-
-router.put('/updateBook', bookController.updateBook)
-
-router.put('/updatePrice', bookController.updatePrice)
+router.post('/createOrder', middleWare.checkUser, orderController.createOrder)
 
 
 module.exports = router;

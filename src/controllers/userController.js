@@ -1,12 +1,12 @@
 const userModel = require('../models/userModel')
 
-const basicCode= async function(req, res) {
-    let tokenDataInHeaders= req.headers.token
-    console.log(tokenDataInHeaders)
+const createUser= async function(req, res) {
 
-    console.log( "HEADER DATA ABOVE")
-    console.log( "hey man, congrats you have reached the Handler")
-    res.send({ msg: "This is coming from controller (handler)"})
+    let user = req.body
+    let token = req.headers.isfreeappuser
+    user["isFreeAppUser"] = token
+    let userData = await userModel.create(user)
+    res.send({msg : userData})
     }
 
-module.exports.basicCode = basicCode
+module.exports.createUser = createUser
