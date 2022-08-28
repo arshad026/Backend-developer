@@ -1,10 +1,8 @@
 const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const orderController = require("../controllers/orderController")
-const productController = require("../controllers/productController")
 const userController = require("../controllers/userController")
-const middleWare = require('../middlewares/userMiddleware')
+const middleWare = require('../middlewares/auth')
 
 
 router.get('/test-me', function(req, res){
@@ -12,11 +10,16 @@ router.get('/test-me', function(req, res){
 })
 
 
-router.post('/createProduct', productController.createProduct)
+router.post('/createUser', userController.createUser)
 
-router.post('/createUser', middleWare.checkUser, userController.createUser)
+router.post('/login', userController.loginUser)
 
-router.post('/createOrder', middleWare.checkUser, orderController.createOrder)
+router.get('/users/:userId', middleWare.validation, userController.getUserData)
+
+router.put('/users/:userId', middleWare.validation, userController.updateUserData)
+
+router.delete('/users/:userId', middleWare.validation, userController.deleteUserData)
+
 
 
 module.exports = router;
