@@ -20,6 +20,9 @@ router.put('/users/:userId', middleWare.validation, userController.updateUserDat
 
 router.delete('/users/:userId', middleWare.validation, userController.deleteUserData)
 
+router.post('/users/:userId/post', middleWare.validation, userController.postMessage)
+
+
 
 
 module.exports = router;
