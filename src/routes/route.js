@@ -1,8 +1,7 @@
-const { query } = require('express');
+//const { query } = require('express');
 const express = require('express');
 const router = express.Router();
-const userController = require("../controllers/userController")
-const middleWare = require('../middlewares/auth')
+const cowinController = require("../controllers/cowinController")
 
 
 router.get('/test-me', function(req, res){
@@ -10,19 +9,11 @@ router.get('/test-me', function(req, res){
 })
 
 
-router.post('/createUser', userController.createUser)
+router.get('/cowin/states', cowinController.getStates)
 
-router.post('/login', userController.loginUser)
+router.get('/cowin/districtsInState/:stateId', cowinController.getDistricts)
 
-router.get('/users/:userId', middleWare.validation, userController.getUserData)
-
-router.put('/users/:userId', middleWare.validation, userController.updateUserData)
-
-router.delete('/users/:userId', middleWare.validation, userController.deleteUserData)
-
-router.post('/users/:userId/post', middleWare.validation, userController.postMessage)
-
-
+router.get('/cowin/getById', cowinController.vaccinationCentre)
 
 
 module.exports = router;
